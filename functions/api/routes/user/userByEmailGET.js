@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const util = require('../../../lib/util');
 const statusCode = require('../../../constants/statusCode');
 const responseMessage = require('../../../constants/responseMessage');
@@ -10,10 +11,12 @@ module.exports = async (req, res) => {
     return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NULL_VALUE));
   }
 
-  const user = users.filter((obj) => obj.email === email)[0];
+  let user = users.filter((obj) => obj.email === email)[0];
   if (!user) {
     return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, responseMessage.NO_USER));
   }
+
+  user = _.omit(user, 'password');
 
   res.status(statusCode.OK).send(util.success(statusCode.OK, responseMessage.USER_GET_SUCCESS, user));
 };

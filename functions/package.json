@@ -22,7 +22,8 @@
     "firebase-admin": "^9.2.0",
     "firebase-functions": "^3.11.0",
     "helmet": "^4.6.0",
-    "hpp": "^0.2.3"
+    "hpp": "^0.2.3",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
